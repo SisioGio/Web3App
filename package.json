@@ -20,7 +20,7 @@
     "eject": "react-scripts eject"
   },
 
-  "proxy": "http://localhost:3001",
+  "proxy": "https://alessiosapp.herokuapp.com",
   "eslintConfig": {
     "extends": [
       "react-app",
