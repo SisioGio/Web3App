@@ -20,7 +20,7 @@
     "eject": "react-scripts eject"
   },
 
-  "proxy": "https://alessiosapp.herokuapp.com",
+  "proxy": "https://www.greengangpumpkins.com",
   "eslintConfig": {
     "extends": [
       "react-app",
