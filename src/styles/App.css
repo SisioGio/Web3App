@@ -401,6 +401,7 @@ nav {
   
 }
 #genesis{
+  display: none;
   padding:0rem .5rem
 }
 /* This container is needed to position the front and back side */
@@ -946,6 +947,10 @@ margin-left: 0;
   
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
+    #genesis{
+      display: block;
+      padding:0rem .5rem
+    }
     .slider-left{
       display: flex;
       overflow-x: visible;

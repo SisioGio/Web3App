@@ -19,7 +19,7 @@ function Genesis(){
 <div className="row justify-content-center">
 <Fade right big>
   <div className="col-12 col-md-8 col-lg-10" >
-  <video src={video_content} autoPlay loop></video>
+  <video src="https://res.cloudinary.com/dzcqzw5cj/video/upload/v1651237775/output_jgkada.mp4" autoPlay loop></video>
   </div>
 
   <div className="col-12">
