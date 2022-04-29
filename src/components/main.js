@@ -17,6 +17,8 @@ import Footer from "./footer.js";
 import Team2 from './team2'
 import Opensea from "./opensea.js";
 import RingLoader from 'react-spinners/RingLoader';
+import SliderLeft from './slider_left'
+import SliderRight from './slider_right'
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 function Main() {
@@ -61,18 +63,18 @@ function Main() {
                   <s.SpacerXXXL></s.SpacerXXXL>
                   <Team/>
 
-               
+
                   <Genesis/>
               
                   <s.SpacerXXL></s.SpacerXXL>
-                  <s.SpacerXXXL></s.SpacerXXXL>
-                <Slider/>
-                <s.SpacerXXXL></s.SpacerXXXL>
+
+                {/* <Slider/> */}
+            
               
                 {/* <Opensea></Opensea> */}
-              
-                
-                
+              <SliderLeft/>
+                <Cartoon/>
+                <SliderRight/>
                 <GreenMap/>
             <Footer></Footer>
             </div>

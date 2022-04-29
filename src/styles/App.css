@@ -235,7 +235,7 @@ p{
   pointer-events: none;
 }
 .main-container{
-   background: linear-gradient(0deg, rgb(33,177,194) 20%, rgb(30, 46, 127) 80%);  
+  background:linear-gradient(0deg, rgb(91 240 255) 30%, rgb(30, 46, 127) 80%);
    width: 100%;
    height: auto;
    position: relative;
@@ -1278,7 +1278,6 @@ margin-left: 0;
 }
 #genesis p{
   border-radius: 50px;
-  background-color: #0000006f;
   font-size: 24px;
   line-height: 36px;
   margin: 1rem 0rem;

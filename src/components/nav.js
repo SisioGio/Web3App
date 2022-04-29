@@ -41,11 +41,11 @@ function Nav(){
         <li class="nav-item">
           <a class="nav-link " href="#greenMap">GreenMap</a>
         </li>
-        <Link to='/cartoon'>
+        {/* <Link to='/cartoon'>
         <li class="nav-item">
           <a class="nav-link ">Cartoon</a>
         </li>
-        </Link>
+        </Link> */}
         <Link to='faqs'>
         <li class="nav-item">
           <a class="nav-link " href="#faqs">FAQ</a>

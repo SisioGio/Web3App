@@ -3,7 +3,7 @@ import '../styles/App.css';
 import * as s from "./../styles/globalStyles";
 import Fade from 'react-reveal/Fade';
 import ReactPlayer from "react-player";
-import video_content from './../images/output.mp4'
+// import video_content from './../images/output.mp4'
 function Genesis(){
     return(
         <div className=" text-center  " id="genesis">
@@ -12,17 +12,17 @@ function Genesis(){
 <h1>GENESIS</h1>
 </Fade>
 <s.SpacerXXXL></s.SpacerXXXL>
-<s.SpacerLarge></s.SpacerLarge>
+{/* <s.SpacerLarge></s.SpacerLarge> */}
 
 
 
 <div className="row justify-content-center">
 <Fade right big>
-  <div className="col-12 col-md-8 col-lg-10" >
+  {/* <div className="col-12 col-md-8 col-lg-10" >
   <video src="https://res.cloudinary.com/dzcqzw5cj/video/upload/v1651237775/output_jgkada.mp4" autoPlay loop></video>
-  </div>
+  </div> */}
 
-  <div className="col-12">
+  <div className="col-12 col-md-10 col-lg-8">
           <div className="w-100  text-center mx-auto">
     
              <s.SpacerSmall></s.SpacerSmall>
