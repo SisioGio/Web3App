@@ -1,11 +1,11 @@
 import React  from "react";
 import '../styles/App.css';
 import * as s from "./../styles/globalStyles";
-import MATT from './../images/Team/MATT.jpeg'
-import ALEXEI from './../images/Team/ALEXEI.jpg'
-import ALEKSY from './../images/Team/ALEKSY.jpg'
-import SIMON from './../images/Team/SIMON.jpeg'
-import ADRI from './../images/Team/ADRI.jpeg'
+import MATT from './../images/Team/1.png'
+import ALEXEI from './../images/Team/2.png'
+import ALEKSY from './../images/Team/3.png'
+import SIMON from './../images/Team/4.png'
+import ADRI from './../images/Team/5.png'
 function Team(){
     return(
         <div className=" text-center mx-auto " id="team">

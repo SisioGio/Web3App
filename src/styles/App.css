@@ -427,6 +427,7 @@ nav {
 }
 .flip-box img{
   width: 100%;
+  border-radius: 0px;
 }
 .flip-box-back:hover{
   
@@ -557,8 +558,10 @@ margin-left: 0;
   transform: scale(1.1);
 }
 #map h3{
-  font-size: 20px!important;
+  font-size: 24px!important;
   color: white;
+  font-family: 'Luckiest Guy', cursive;
+
 }
 #map p{
   font-size: 14px!important;
@@ -778,7 +781,10 @@ margin-left: 0;
     .slider img{
       width:18.75%;
     }
-    
+    .flip-box img{
+      width: 100%;
+      border-radius: 25px;
+    }
     @keyframes sliderLeft {
     
     
@@ -951,7 +957,10 @@ margin-left: 0;
     .slider img{
       width:12.5%;
     }
-    
+    .flip-box img{
+      width: 100%;
+      border-radius: 50px;
+    }
     @keyframes sliderLeft {
     
     
@@ -1062,7 +1071,10 @@ margin-left: 0;
     .slider img{
       width:10%;
     }
-    
+    .flip-box img{
+      width: 100%;
+      border-radius: 75px;
+    }
     @keyframes sliderLeft {
     
     
@@ -1241,6 +1253,10 @@ margin-left: 0;
    
       padding: 0rem 2rem;
   }
+
+  #genesis video{
+    width: 60%;
+  }
     .flip-box img{
       width: 100%     
     }
@@ -1256,6 +1272,8 @@ margin-left: 0;
   font-size: 48px;
 }
 #genesis p{
+  border-radius: 50px;
+  background-color: #0000006f;
   font-size: 24px;
   line-height: 36px;
   margin: 1rem 0rem;

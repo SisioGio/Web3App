@@ -14,9 +14,9 @@ import Nft10 from './../images/Slider/10.png'
 import Nft11 from './../images/Slider/11.png'
 import Nft12 from './../images/Slider/12.png'
 import Nft13 from './../images/Slider/13.png'
-import Nft14 from './../images/Slider/4.png'
+import Nft14 from './../images/Slider/2.png'
 import Nft15 from './../images/Slider/12.png'
-import Nft16 from './../images/Slider/9.png'
+import Nft16 from './../images/Slider/1.png'
 function Slider(){
     return(
         <div className="w-100 " id='slider'>
@@ -32,7 +32,7 @@ function Slider(){
                         <img src={Nft1} alt="" />
                         <img src={Nft2} alt="" />
                         <img src={Nft3} alt="" />
-                        <img src={Nft4} alt="" />
+                        <img src={Nft12} alt="" />
                         <img src={Nft5} alt="" />
                         <img src={Nft6} alt="" />
                         <img src={Nft7} alt="" />
@@ -61,13 +61,13 @@ function Slider(){
                         <img src={Nft15} alt="" />
                         <img src={Nft16} alt="" />
                         <img src={Nft9} alt="" />
-                        <img src={Nft10} alt="" />
+                        <img src={Nft6} alt="" />
                         <img src={Nft11} alt="" />
                         <img src={Nft12} alt="" />
                         <img src={Nft13} alt="" />
-                        <img src={Nft14} alt="" />
+                        <img src={Nft4} alt="" />
                         <img src={Nft15} alt="" />
-                        <img src={Nft16} alt="" />
+                        <img src={Nft12} alt="" />
                     
      
 </div>

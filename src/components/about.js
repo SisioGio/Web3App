@@ -2,13 +2,15 @@ import React  from "react";
 import '../styles/App.css';
 import * as s from "./../styles/globalStyles";
 import Nft1 from './../images/About/1.png'
-import Nft2 from './../images/About/2.png'
-import Nft3 from './../images/About/3.png'
+import Nft2 from './../images/About/8.png'
+import Nft3 from './../images/About/7.png'
 import Nft4 from './../images/About/4.png'
 import Nft5 from './../images/About/5.png'
 import Nft6 from './../images/About/6.png'
 import Nft7 from './../images/About/7.png'
 import Nft8 from './../images/About/8.png'
+
+
 import Slide from 'react-reveal/Slide';
 function About(){
     
@@ -44,14 +46,14 @@ function About(){
                                 <Slide right>
                                 <div class="slider-cont">     
                                 <div class="slider mx-auto">
-                                <span style={{"--i":1}}>  <img src={Nft8} alt="" /> </span>
+                                <span style={{"--i":1}}>  <img src={Nft1} alt="" /> </span>
                                 <span style={{"--i":2}}>  <img src={Nft2} alt="" /> </span>
                                 <span style={{"--i":3}}>  <img src={Nft3} alt="" /> </span>
-                                <span style={{"--i":4}}>  <img src={Nft8} alt="" /> </span>
+                                <span style={{"--i":4}}>  <img src={Nft4} alt="" /> </span>
                                 <span style={{"--i":5}}>  <img src={Nft5} alt="" /> </span>
                                 <span style={{"--i":6}}>  <img src={Nft6} alt="" /> </span>
                                 <span style={{"--i":7}}>  <img src={Nft7} alt="" /> </span>
-                                <span style={{"--i":8}}>  <img src={Nft1} alt="" /> </span>
+                                <span style={{"--i":8}}>  <img src={Nft8} alt="" /> </span>
                                 </div>
                               </div>
                               </Slide>
