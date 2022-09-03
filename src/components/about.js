@@ -31,6 +31,7 @@ function About(){
         console.log('The link was clicked.');
         contentText = "genesis";
       }
+      
     return(
         <div className="text-center w-100 mx-auto " id="about">
                         <div className="w-100 text-center mx-auto">
