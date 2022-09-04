@@ -267,7 +267,7 @@ nav {
 #about{
   height: 100%;
   overflow-x: hidden;
-  padding:5rem 0rem
+  padding:10rem 0rem
   
 }
 #about-text p{
@@ -278,6 +278,22 @@ nav {
   /* bottom: -50%; */
   margin: 10px;
 }
+
+.connect-wallet-button{
+  border:none;
+  border-radius: 24px;
+  padding: 0.2rem 1rem;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  transition: 500ms ease;
+}
+
+.connect-wallet-button:hover{
+  border: 3px solid white
+}
+
+
 #about h1{
   margin:5rem 0rem;
 }

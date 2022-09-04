@@ -12,7 +12,7 @@ function Genesis(){
 <s.SpacerXXXL></s.SpacerXXXL>
 <s.SpacerLarge></s.SpacerLarge>
 <Fade left big>
-<div className="video-responsive">
+{/* <div className="video-responsive">
     <iframe
       width="853"
       height="480"
@@ -23,7 +23,7 @@ function Genesis(){
       title="Embedded youtube"
     />
   </div>
-  
+   */}
 {/* <video class="video-fluid z-depth-1" autoPlay loop controls muted>
   <source src="https://www.youtube.com/watch?v=LA14n1In-wo" type="video/mp4" />
 </video> */}

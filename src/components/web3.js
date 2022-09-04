@@ -221,7 +221,7 @@ function Web3(){
     
     
           <button onClick={connectWalletHandler} className='cta-button connect-wallet-button'>
-            Connect Wallet
+            Connect Your Wallet
           </button>
         )
       }

@@ -17,6 +17,7 @@ import Nft13 from './../images/Slider/13.png'
 import Nft14 from './../images/Slider/4.png'
 import Nft15 from './../images/Slider/12.png'
 import Nft16 from './../images/Slider/9.png'
+import Cartoon from './../components/cartoon'
 function Slider(){
     return(
         <div className="w-100 " id='slider'>
@@ -48,7 +49,9 @@ function Slider(){
             
                  
             </div>
-            
+
+
+<Cartoon/>
             <div class="slider-right">
             
             <img src={Nft1} alt="" />

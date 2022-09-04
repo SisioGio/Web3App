@@ -18,6 +18,8 @@ import Team2 from './team2'
 import Opensea from "./opensea.js";
 import RingLoader from 'react-spinners/RingLoader';
 import Web3 from './web3.js'
+import SliderLeft from './slider_left'
+import SliderRight from './slider_right'
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 function Main() {
@@ -60,7 +62,7 @@ function Main() {
                   <Home/>
                   <s.SpacerXXXL></s.SpacerXXXL>
                   
-                  <About/>
+                  {/* <About/> */}
                   <AboutNew/>
                   <s.SpacerXXXL></s.SpacerXXXL>
                   <Web3/>
@@ -71,7 +73,9 @@ function Main() {
               
                   <s.SpacerXXL></s.SpacerXXL>
                   <s.SpacerXXXL></s.SpacerXXXL>
-                <Slider/>
+                  <SliderLeft/>
+                <Cartoon/>
+                <SliderRight/>
                 <s.SpacerXXXL></s.SpacerXXXL>
               
                 {/* <Opensea></Opensea> */}
