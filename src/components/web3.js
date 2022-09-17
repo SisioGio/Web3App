@@ -10,7 +10,10 @@ import * as Utils from 'web3-utils';
 import Instagram from './../images/icons8-instagram-48.png'
 import About from './about.js'
 import Countdown , { zeroPad, calcTimeDelta, formatTimeDelta }from "react-countdown";
-function Web3(){
+import Timer from './salescountdown';
+import SalesStarter from './salesstarter';
+
+function Web3(props){
     const[currentAccount, setCurrentAccount] = useState(null);
     const[metamaskInstalled,setMetamaskInstalled] = useState(false);
     const[onlyWhiteListed,setOnlyWhiteListed] = useState(true);
@@ -34,6 +37,13 @@ function Web3(){
     const[ticketHash,setTicketHash] = useState(null);
     const[winners,setWinners] = useState([]);
 
+    const[salesOpen,setSalesOpen] = useState(false)
+
+    const openSales = () =>{
+    
+      setSalesOpen(true);
+      
+    }
 
     const decrementMintAmount = () => {
         let newMintAmount = mintAmount - 1;
@@ -229,7 +239,7 @@ function Web3(){
         
         return (
 
-            <div className='justify-content-center'>
+            <div className='justify-content-center' >
                
 
                 <div className='container-fluid d-flex justify-content-center py-4' id='buy-section'>
@@ -255,6 +265,8 @@ function Web3(){
             </div>
         )
       }
+     
+
       const Completionist = () => {
 
           return (
@@ -292,7 +304,7 @@ function Web3(){
           
        
       
-          getLotteryWinners();     
+          // getLotteryWinners();     
 
 
 
@@ -411,24 +423,36 @@ const buyLotteryTicket = async() =>{
       }, [])
 
     return(
-        <div className=" text-center  " id="">
-            
+        <div className=" text-center  " id="buy-section">
+
             <h1>NFT & Lottery</h1>
             <s.SpacerSmall></s.SpacerSmall>
+
           <About/>
             
             <div>
 
 
-            {currentAccount ? 
-                            (onlyWhiteListed ? 
-                                                (isWhiteListed ? 
-                                                                    mintNftButton() : mintingNotAllowed())
-                                                                    
-                                                : (mintNftButton()))
-                            : connectWalletButton()}
+          {props.salesAreOpen? (
+            currentAccount ? 
+            (onlyWhiteListed ? 
+                                (isWhiteListed ? 
+                                                    mintNftButton() : mintingNotAllowed())
+                                                    
+                                : (mintNftButton()))
+            : connectWalletButton()
 
-            
+          ):(
+           <Timer endDateTime={1667170800000}/>
+          )}
+
+
+          {lotteryIsOpen && onlyWhiteListed==false?(
+            Lottery()
+          ):(null)}
+         
+
+       
 
 
 

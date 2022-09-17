@@ -1297,3 +1297,30 @@ margin-left: 0;
   
 }
   }
+
+
+
+
+
+  #timer-sales{
+    background-color: #ff6200af;
+    padding: 5rem 0rem;
+    top: 50vh;
+    transform: translateY(-50%);
+    position: relative;
+    text-align: center;
+  }
+
+  #minting-not-allowed{
+    background-color: #ff6200af;
+  }
+
+ #open-sales{
+  background-color: #ff6200af;
+  text-align: center;
+  top: 50vh;
+  transform: translateY(-50%);
+  position: relative;
+  padding: 5rem 0rem;
+
+ }

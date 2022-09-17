@@ -26,6 +26,8 @@ function Main() {
   
   const [loading,setLoading] = useState(false);
 
+  const[salesAreOpen,setSalesAreOpen] = useState(false)
+
   // useEffect(() => {
   //   setLoading(true);
   //   setTimeout(() =>{
@@ -59,13 +61,13 @@ function Main() {
       :
             <div className="main-container">
 
-                  <Home/>
+                 
+                  <Home salesAreOpen={salesAreOpen} setSalesAreOpen={setSalesAreOpen}/>
                   <s.SpacerXXXL></s.SpacerXXXL>
                   
-                  {/* <About/> */}
                   <AboutNew/>
                   <s.SpacerXXXL></s.SpacerXXXL>
-                  <Web3/>
+                  <Web3 salesAreOpen={salesAreOpen}/>
                   <Team/>
 
                
@@ -73,12 +75,15 @@ function Main() {
               
                   <s.SpacerXXL></s.SpacerXXL>
                   <s.SpacerXXXL></s.SpacerXXXL>
+
                   <SliderLeft/>
+
                 <Cartoon/>
+
                 <SliderRight/>
+
                 <s.SpacerXXXL></s.SpacerXXXL>
               
-                {/* <Opensea></Opensea> */}
               
                 
                 
