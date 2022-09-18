@@ -1,10 +1,9 @@
 import React ,{useState,useEffect} from "react";
 import '../styles/App.css'
-import Mint from './mint.js'
 import Bounce from 'react-reveal/Bounce';
 import SalesStarter from "./salesstarter";
 import * as s from "./../styles/globalStyles";
-import Buy from "./Mint/buy";
+
 function Home(props){
 
   const  openSales = () =>{

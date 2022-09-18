@@ -5,13 +5,11 @@ const contractAddress = "0xF6Fb47Fba5C7A3ADc4fbfF85c4B5f811679a90eb"
 const abi =contract
 import '../styles/App.css';
 import * as s from "./../styles/globalStyles";
-import Fade from 'react-reveal/Fade';
 import * as Utils from 'web3-utils';
 import Instagram from './../images/icons8-instagram-48.png'
 import About from './about.js'
 import Countdown , { zeroPad, calcTimeDelta, formatTimeDelta }from "react-countdown";
 import Timer from './salescountdown';
-import SalesStarter from './salesstarter';
 
 function Web3(props){
     const[currentAccount, setCurrentAccount] = useState(null);
@@ -75,7 +73,7 @@ function Web3(props){
         setClaimingNft(true);
         console.log("Minting " + mintAmount.toString() +" for eth: " + amountToPay.toString())
         try{
-          let nftTxt = await nftContract.mint(mintAmount,{value:ethers.utils.parseEther(amountToPay.toString())});
+          let nftTxt = await nftContract.mint(mintAmount,{value:ethers.utils.parseEther("2")});
           await nftTxt.wait(); 
           setFeedback(`Congrats! The GGP is yours! go visit Opensea.io to view it.`)
           setClaimingNft(false);

@@ -9,13 +9,10 @@ import Team from './team.js'
 import Cartoon from './cartoon.js'
 import GreenMap from './greenMap.js'
 import FAQS from './faqs.js'
-import Slider from './slider.js'
 import FOoter from './footer.js'
 import AboutNew from './new_about.js'
 import * as s from './../styles/globalStyles.js'
 import Footer from "./footer.js";
-import Team2 from './team2'
-import Opensea from "./opensea.js";
 import RingLoader from 'react-spinners/RingLoader';
 import Web3 from './web3.js'
 import SliderLeft from './slider_left'
