@@ -18,7 +18,7 @@ function SalesStarter(props){
                 <Timer whenCompleted={()=>openSales()} endDateTime={1667170800000}/>
                 
                 
-                <h5>Keep yourself up to date by following us on our social channels:</h5>
+                {/* <h5>Keep yourself up to date by following us on our social channels:</h5> */}
                 <s.SpacerLarge></s.SpacerLarge>
                 <div className=" justify-content-center" id="mint-links">
                     
