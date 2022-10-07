@@ -14,7 +14,7 @@ function Team(){
 <h1>MEET THE GANG</h1>
 <s.SpacerXXL></s.SpacerXXL>
 <div className="container-fluid justify-content-around  " id='team-container'>
-<div className="flip-box">
+<div className="flip-box"  onClick="">
 <h2>ALEXEI</h2>
   <div className="flip-box-inner">
     <div className="flip-box-front">
