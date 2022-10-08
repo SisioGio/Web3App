@@ -31,7 +31,7 @@ function Nav(){
         </Link>
         
         <li class="nav-item">
-          <a class="nav-link" href="#about">About TEST</a>
+          <a class="nav-link" href="#about">About</a>
         </li>
        
         
