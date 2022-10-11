@@ -1,7 +1,7 @@
 import { useEffect,useState,React } from 'react';
 import contract from './../contract/greenGangPumpkins.json'
 import { ethers } from 'ethers';
-const contractAddress = "0xF6Fb47Fba5C7A3ADc4fbfF85c4B5f811679a90eb"
+const contractAddress = "0xaBB2faeF634Dd0BDA9A9a33a3E6DFb6cBc964714"
 const abi =contract
 import '../styles/App.css';
 import * as s from "./../styles/globalStyles";
@@ -14,7 +14,7 @@ import Timer from './salescountdown';
 function Web3(props){
     const[currentAccount, setCurrentAccount] = useState(null);
     const[metamaskInstalled,setMetamaskInstalled] = useState(false);
-    const[onlyWhiteListed,setOnlyWhiteListed] = useState(true);
+
     const[currentPrice,setCurrentPrice] = useState(0);
     const[currentBalance,setCurrentBalance] = useState(1);
     const[isWhiteListed,setIsWhiteListed] = useState(false);
@@ -73,10 +73,11 @@ function Web3(props){
         setClaimingNft(true);
         console.log("Minting " + mintAmount.toString() +" for eth: " + amountToPay.toString())
         try{
-          let nftTxt = await nftContract.mint(mintAmount,{value:ethers.utils.parseEther("2")});
+          let nftTxt = await nftContract.mint(mintAmount,{value:ethers.utils.parseEther(amountToPay.toString())});
           await nftTxt.wait(); 
-          setFeedback(`Congrats! The GGP is yours! go visit Opensea.io to view it.`)
+          setFeedback(`Congrats! The GGP is yours! Visit Opensea.io to view it.`)
           setClaimingNft(false);
+          setCurrentBalance(parseInt(currentBalance)+ parseInt(mintAmount))
           console.log(nftTxt);
           console.log(nftTxt['hash'])
           setTransactionHash(nftTxt['hash'])
@@ -155,15 +156,13 @@ function Web3(props){
         let userIsWhiteListed = await nftContract.isWhiteListed(account);
         await userIsWhiteListed
         setIsWhiteListed(userIsWhiteListed)  
-        // Check if onlyWhiteList
-        let onlyWhiteListed = await nftContract.onlyWhiteListed();
-        await onlyWhiteListed;
-        setOnlyWhiteListed(onlyWhiteListed);
+
+        
         // Get totaly supply
         let totSupply = await nftContract.totalSupply();
         await totSupply;
         setTotalSupply(totSupply);
-
+        
         // Get currentPrice
         let currentPrice = await nftContract.getTokenPrice(totSupply);
         await currentPrice;
@@ -250,8 +249,8 @@ function Web3(props){
 
                 <button disabled={claimingNft? 1 : 0} onClick={() => Buy()}className='mx-2 px-5 my-3 btn btn-lg btn-block btn-outline-light' id='buy-button'>{claimingNft ? "BUSY" : "BUY"}</button>
                 
-                <h5>{feedback}</h5>
-                {transactionHash? <a href={"https://rinkeby.etherscan.io/tx/"+ transactionHash} target="_blank" >View it on Etherscan</a> : null}
+                <h5 className=''>{feedback}</h5>
+                {transactionHash? <a href={"https://goerli.etherscan.io/tx/"+ transactionHash} target="_blank" >View it on Etherscan</a> : null}
                 <div id="infobuy">
                 <h5 className='font-italic text-small'><small>You have {currentBalance.toString()} GGP, you can collect max. 5 GGP.</small></h5>
                 <h5 className='font-italic'><small>If you feel lucky, you can join our lottery for {Utils.fromWei((currentPrice).toString(),'ether').toString()} ETH</small></h5>
@@ -259,7 +258,7 @@ function Web3(props){
                
                 {/* <h5>{totalSupply.toString()} GGP have been already sold.</h5> */}
                 <s.SpacerXXXL></s.SpacerXXXL>
-                {onlyWhiteListed == false && lotteryIsOpen? Lottery(): null}
+                {/* {lotteryIsOpen? Lottery(): null} */}
             </div>
         )
       }
@@ -338,7 +337,7 @@ function Web3(props){
 
 const Lottery = () => {
  
-        console.log(lotteryDeadlineTimeStamp)
+  console.log(lotteryDeadlineTimeStamp)
         return (
 
             <div className='justify-content-center'>
@@ -348,17 +347,26 @@ const Lottery = () => {
 
 {/* <Countdown date={new Date(lotteryDeadlineTimeStamp)} renderer={renderer} /> */}
 
-<Countdown date={Date.now() + 1000} renderer={renderer} />
+<Countdown date={new Date(lotteryDeadlineTimeStamp)} renderer={renderer} />
 <s.SpacerLarge></s.SpacerLarge>
               <h3>Buy a ticket for  {lotteryTicketPrice.toString()} ETH</h3>
             <s.SpacerLarge></s.SpacerLarge>
               {deadLine ? <h5>The lottery is open and it ends on {deadLine.toString()}</h5> : null}
               <s.SpacerMedium></s.SpacerMedium>
               
-              {clientAlreadyInLottery == false? <button disabled={buyingTicket? 1 : 0} className="mx-2 px-5 my-3 btn btn-lg btn-block btn-outline-light" onClick={() => buyLotteryTicket()}>{buyingTicket? "Complete the payment" : "Buy Lottery Ticket"}</button> : <h3 className='text-danger'>You cannot join this lottery! You already have a ticket!</h3>}
+              {clientAlreadyInLottery == false? 
+              (currentBalance > 0 ? <button disabled={buyingTicket? 1 : 0} 
+                className="mx-2 px-5 my-3 btn btn-lg btn-block btn-outline-light" 
+                onClick={() => buyLotteryTicket()}>{buyingTicket? "Complete the payment" : "Buy Lottery Ticket"}
+        </button>: 
+          <h1>You need to own a GGP to partecipate! Don't miss this opportunity</h1>
+        )
+              
+              :
+               <h3 className='text-danger'>You cannot join this lottery! You already have a ticket!</h3>}
               <s.SpacerMedium></s.SpacerMedium>
               <h5>{lotteryFeedback}</h5>
-              {ticketHash? <a href={"https://rinkeby.etherscan.io/tx/"+ ticketHash} target="_blank" >View it on Etherscan</a> : null}
+              {ticketHash? <a href={"https://goerli.etherscan.io/tx/"+ ticketHash} target="_blank" >View it on Etherscan</a> : null}
 
 
               {winners.length > 0 ? (
@@ -431,21 +439,24 @@ const buyLotteryTicket = async() =>{
             <div>
 
 
-          {props.salesAreOpen? (
-            currentAccount ? 
-            (onlyWhiteListed ? 
-                                (isWhiteListed ? 
-                                                    mintNftButton() : mintingNotAllowed())
+          {props.salesAreOpen?
+          
+          (contractIsPaused? (
+            <div>
+            <h1>Contract is paused!</h1>
+            <h3>Contact the project owner</h3>
+            </div>
+            
+          ):(currentAccount  ?  mintNftButton() : connectWalletButton()))
+           
                                                     
-                                : (mintNftButton()))
-            : connectWalletButton()
-
-          ):(
+          :(
            <Timer endDateTime={1667170800000}/>
-          )}
+          )
+          }
 
 
-          {lotteryIsOpen && onlyWhiteListed==false?(
+          {lotteryIsOpen ?(
             Lottery()
           ):(null)}
          

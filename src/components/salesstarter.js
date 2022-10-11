@@ -15,7 +15,7 @@ function SalesStarter(props){
 
                 <div id="timer-sales">
                     <h1>Sales open in:</h1>
-                <Timer whenCompleted={()=>openSales()} endDateTime={1667170800000}/>
+                <Timer whenCompleted={()=>openSales()} endDateTime={ Date.now() + 1000}/>
                 
                 
                 {/* <h5>Keep yourself up to date by following us on our social channels:</h5> */}

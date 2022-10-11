@@ -1381,27 +1381,24 @@ contract GreenGangPumpkins is ERC721A, Ownable {
     uint256 MAX_MINTS = 5;
     uint256 MAX_SUPPLY = 0;
     bool public paused = true;
-    bool public onlyWhiteListed = true;
     address[] public whitelistedAddresses;
     string[] private URIS;
     uint256[] private INDEX;
     bool[] private REVELEAD;
     uint256[] private PRICES;
-    uint256[] private PRICES_PRESALE;
+    uint256[] private PRICES_WL;
     address[] public lottery;
-    uint256 lotteryTicketPrice = 5000000000000000;
+    uint256 lotteryTicketPrice = 15000000000000000;
     uint256 public lotteryEndDateTime;
+    address[] private winners;
 
-    constructor(
-        string memory _name,
-        string memory _symbol,
-        string memory _initNotRevealedUri
-    ) ERC721A(_name, _symbol) {
-        setNotRevealedURI(_initNotRevealedUri);
-    }
+    constructor(string memory _name, string memory _symbol)
+        ERC721A(_name, _symbol)
+    {}
 
     function startLottery(uint256 newlotteryEndDateTime) public onlyOwner {
         resetLottery();
+        delete winners;
         lotteryEndDateTime = newlotteryEndDateTime;
     }
 
@@ -1417,21 +1414,18 @@ contract GreenGangPumpkins is ERC721A, Ownable {
         }
     }
 
-    function getWinnerByIndex(uint256 indexWinner)
-        public
-        view
-        returns (address)
-    {
-        return lottery[indexWinner];
+    function addWinner(uint256 indexWinner) public {
+        winners.push(lottery[indexWinner]);
     }
 
     function buyLotteryTicket() external payable {
         require(paused == false, "The contract is paused!");
+
+        require(msg.value >= lotteryTicketPrice, "Not enough ether sent");
         require(
-            onlyWhiteListed == false,
-            "Lottery is not available before reveal"
+            getAccountBalance(msg.sender) > 0,
+            "You need to own a GGP to join the lottery"
         );
-        require(msg.value >= 5000000000000000, "Not enough ether sent");
         require(isLotteryOpen(), "The lottery is closed, wait the next one!");
 
         require(
@@ -1458,20 +1452,20 @@ contract GreenGangPumpkins is ERC721A, Ownable {
         string memory _BASEURI,
         uint256 _AMOUNT,
         uint256 _PRICE,
-        uint256 _PRICE_PRESALE
-    ) public payable onlyOwner {
+        uint256 _PRICE_WL
+    ) public onlyOwner {
         if (INDEX.length == 0) {
             INDEX.push(_AMOUNT);
             URIS.push(_BASEURI);
-            REVELEAD.push(false);
+            REVELEAD.push(true);
         } else {
             INDEX.push(INDEX[INDEX.length - 1] + _AMOUNT);
             URIS.push(_BASEURI);
-            REVELEAD.push(false);
+            REVELEAD.push(true);
         }
         MAX_SUPPLY = MAX_SUPPLY + _AMOUNT;
         PRICES.push(_PRICE);
-        PRICES_PRESALE.push(_PRICE_PRESALE);
+        PRICES_WL.push(_PRICE_WL);
     }
 
     function getMaxSupply() public view returns (uint256) {
@@ -1481,10 +1475,6 @@ contract GreenGangPumpkins is ERC721A, Ownable {
     function mint(uint256 quantity) external payable {
         require(paused == false, "The contract is paused");
 
-        if (msg.sender != owner() && onlyWhiteListed == true) {
-            require(isWhiteListed(msg.sender) == true, "Not in whitelist");
-        }
-
         // require(quantity + _numberMinted(msg.sender) <= MAX_MINTS, "Exceeded the limit");
         require(
             totalSupply() + quantity <= MAX_SUPPLY,
@@ -1492,9 +1482,9 @@ contract GreenGangPumpkins is ERC721A, Ownable {
         );
         uint256 batch_index = findBatchID((totalSupply() + 1));
         if (msg.sender != owner()) {
-            if (onlyWhiteListed == true) {
+            if (isWhiteListed(msg.sender)) {
                 require(
-                    msg.value >= (PRICES_PRESALE[batch_index] * quantity),
+                    msg.value >= (PRICES_WL[batch_index] * quantity),
                     "Not enough ether sent"
                 );
             } else {
@@ -1549,6 +1539,10 @@ contract GreenGangPumpkins is ERC721A, Ownable {
         return lottery;
     }
 
+    function getLotteryWinners() public view returns (address[] memory) {
+        return winners;
+    }
+
     function getLotteryTicketPrice() public view returns (uint256) {
         return lotteryTicketPrice;
     }
@@ -1563,10 +1557,10 @@ contract GreenGangPumpkins is ERC721A, Ownable {
     }
 
     function getTokenPrice(uint256 tokenID) public view returns (uint256) {
-        if (isRevealed(tokenID)) {
-            return PRICES[findBatchID(tokenID)];
+        if (isWhiteListed(msg.sender)) {
+            return PRICES_WL[findBatchID(tokenID)];
         } else {
-            return PRICES_PRESALE[findBatchID(tokenID)];
+            return PRICES[findBatchID(tokenID)];
         }
     }
 
@@ -1657,10 +1651,6 @@ contract GreenGangPumpkins is ERC721A, Ownable {
 
     function pause(bool _state) public onlyOwner {
         paused = _state;
-    }
-
-    function setOnlyWhiteList(bool _onlyWhiteList) public onlyOwner {
-        onlyWhiteListed = _onlyWhiteList;
     }
 
     function withdraw() public payable onlyOwner {
